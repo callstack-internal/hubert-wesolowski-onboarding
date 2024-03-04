@@ -1,8 +1,11 @@
 import React from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { Button } from './src/components/button';
+import { defaultTheme } from './src/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,7 +29,9 @@ function App(): React.JSX.Element {
 function AppContext(): React.JSX.Element {
   return (
     <SafeAreaProvider>
-      <App />
+      <PaperProvider theme={defaultTheme}>
+        <App />
+      </PaperProvider>
     </SafeAreaProvider>
   );
 }
