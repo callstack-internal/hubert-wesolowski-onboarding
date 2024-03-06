@@ -9,6 +9,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'simple-import-sort/imports': 2,
     'simple-import-sort/exports': 2,
+    'no-console': 'error',
     '@tanstack/query/exhaustive-deps': 'error',
     '@tanstack/query/stable-query-client': 'error',
   },

@@ -12,6 +12,7 @@ export const getCitiesWeather = async (ids: number[]) => {
 
     return WeatherGroupScheme.parse(data.list);
   } catch (e) {
-    console.log(e);
+    // eslint-disable-next-line no-console
+    console.log('getCitiesWeather::', e);
   }
 };

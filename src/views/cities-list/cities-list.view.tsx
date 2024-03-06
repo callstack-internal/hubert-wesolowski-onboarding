@@ -12,8 +12,6 @@ export const CitiesListView = ({ navigation }: CitiesListScreenProps) => {
     navigation.navigate(RouteNames.CityDetails, { city_id: 123 });
   };
 
-  console.log(JSON.stringify(data, null, 2));
-
   return (
     <View>
       <Text variant="headlineMedium">Cities List View</Text>
