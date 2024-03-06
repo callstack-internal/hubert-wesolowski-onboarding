@@ -11,10 +11,6 @@ const iconSize = 50;
 
 export const styles = StyleSheet.create({
   emptyListContainer,
-  listWrapper: {
-    flex: 1,
-    ...emptyListContainer,
-  },
   list: {
     width: '100%',
   },

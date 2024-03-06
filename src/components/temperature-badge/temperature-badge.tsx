@@ -1,23 +1,26 @@
 import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
-import { TempUnit } from '../../../types/open-weather';
+import {
+  TemperatureUnits,
+  TemperatureUnitsSymbols,
+} from '../../../types/open-weather';
 import { styles } from './temperature.styles';
 
 type Props = {
   temperature: number;
-  unit?: TempUnit;
+  units?: TemperatureUnits;
 };
 
 export const TemperatureBadge = ({
   temperature,
-  unit = TempUnit.STANDARD,
+  units = TemperatureUnits.STANDARD,
 }: Props) => {
-  const unitSymbol = unit === TempUnit.METRIC ? '°C' : 'K';
+  const unitSymbol = TemperatureUnitsSymbols[units];
 
   return (
     <View style={styles.container}>
-      <Text>
+      <Text style={styles.text}>
         {Math.round(temperature)} {unitSymbol}
       </Text>
     </View>

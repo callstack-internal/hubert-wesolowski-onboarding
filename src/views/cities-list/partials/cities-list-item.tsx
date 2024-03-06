@@ -1,10 +1,11 @@
 import { OPEN_WEATHER_BASE_ICON_URL } from '@env';
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-paper';
 
-import { PartialOWCityWeather, TempUnit } from '../../../../types/open-weather';
+import { PartialOWCityWeather } from '../../../../types/open-weather';
 import { TemperatureBadge } from '../../../components';
+import { TemperatureUnitsContext } from '../../../contexts/temperature-units-context';
 import { styles } from './cities-list.styles';
 
 type Props = {
@@ -13,6 +14,7 @@ type Props = {
 };
 
 export const CitiesListItem = ({ item, onPress }: Props) => {
+  const { units } = useContext(TemperatureUnitsContext);
   const iconUrl = item.weather[0].icon
     ? `${OPEN_WEATHER_BASE_ICON_URL}${item.weather[0].icon}.png`
     : null;
@@ -36,7 +38,7 @@ export const CitiesListItem = ({ item, onPress }: Props) => {
         </Text>
       </View>
       <View style={styles.listItemDataContainer}>
-        <TemperatureBadge temperature={temp} unit={TempUnit.METRIC} />
+        <TemperatureBadge temperature={temp} units={units} />
         {iconUrl && (
           <Image style={styles.listItemIcon} source={{ uri: iconUrl }} />
         )}

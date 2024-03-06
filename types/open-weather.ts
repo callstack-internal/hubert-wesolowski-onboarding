@@ -14,11 +14,17 @@ export type OWSys = {
   sunset: number;
 };
 
-export enum TempUnit {
+export enum TemperatureUnits {
   STANDARD = 'standard',
   IMPERIAL = 'imperial',
   METRIC = 'metric',
 }
+
+export const TemperatureUnitsSymbols = {
+  [TemperatureUnits.STANDARD]: '°K',
+  [TemperatureUnits.METRIC]: '°C',
+  [TemperatureUnits.IMPERIAL]: '°F',
+} as const;
 
 export type OWWeather = {
   id: number;

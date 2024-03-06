@@ -9,6 +9,7 @@ import { StatusBar } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { TemperatureUnitsContextProvider } from './src/contexts/temperature-units-context';
 import { Routes } from './src/routes/routes';
 import { defaultTheme } from './src/theme';
 
@@ -34,7 +35,9 @@ function AppContext(): React.JSX.Element {
     <SafeAreaProvider>
       <PaperProvider theme={defaultTheme}>
         <QueryClientProvider client={queryClient}>
-          <App />
+          <TemperatureUnitsContextProvider>
+            <App />
+          </TemperatureUnitsContextProvider>
         </QueryClientProvider>
       </PaperProvider>
     </SafeAreaProvider>

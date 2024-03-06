@@ -1,9 +1,15 @@
 import { OPEN_WEATHER_API_KEY } from '@env';
 
-import { OWGroupResponse, TempUnit } from '../../../../types/open-weather';
+import {
+  OWGroupResponse,
+  TemperatureUnits,
+} from '../../../../types/open-weather';
 import { fetchClient } from '../../../utils/fetch';
 
-export const getCitiesWeather = async (ids: number[], units: TempUnit) => {
+export const getCitiesWeather = async (
+  ids: number[],
+  units: TemperatureUnits,
+) => {
   if (!ids || !ids.length) {
     return [];
   }

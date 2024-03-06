@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 30,
     overflow: 'hidden',
-    backgroundColor: MD3Colors.tertiary80,
+    backgroundColor: MD3Colors.tertiary70,
+  },
+  text: {
+    color: MD3Colors.neutral100,
   },
 });
