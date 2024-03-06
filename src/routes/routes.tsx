@@ -12,7 +12,8 @@ export const Routes = () => {
     <NavigationContainer>
       <MainStack.Navigator
         initialRouteName={RouteNames.CitiesList}
-        screenOptions={{ headerTitleAlign: 'center' }}>
+        screenOptions={{ headerTitleAlign: 'center' }}
+      >
         <MainStack.Screen
           options={{
             title: 'Cities list',
