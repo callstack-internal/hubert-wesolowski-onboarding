@@ -19,8 +19,11 @@ export const CitiesListView = ({ navigation }: CitiesListScreenProps) => {
     isError,
     isFetching,
     refetch,
-  } = useGetCitiesWeather(cityIds, units);
-  const parsedData = WeatherGroupScheme.parse(data);
+  } = useGetCitiesWeather<PartialOWCityWeather[]>(
+    cityIds,
+    units,
+    WeatherGroupScheme.parse,
+  );
   const handlePressShowDetails = (city: PartialOWCityWeather) => {
     navigation.navigate(RouteNames.CityDetails, { city });
   };
@@ -37,7 +40,7 @@ export const CitiesListView = ({ navigation }: CitiesListScreenProps) => {
         isLoading={isFetching}
         onRefetch={handleRefetch}
       >
-        <CitiesList cities={parsedData} onItemPress={handlePressShowDetails} />
+        <CitiesList cities={data} onItemPress={handlePressShowDetails} />
       </StatusContainer>
     </View>
   );
