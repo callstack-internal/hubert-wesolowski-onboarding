@@ -11,13 +11,13 @@ export const CityDetailsView = ({
   const { params } = route;
 
   useEffect(() => {
-    navigation.setOptions({ title: `City: ${params.city_id}` });
-  }, [navigation, params.city_id]);
+    navigation.setOptions({ title: `City: ${params.city.name}` });
+  }, [navigation, params.city.name]);
 
   return (
     <View>
       <Text variant="headlineMedium">City Details</Text>
-      <Text variant="bodyMedium">City id: {params.city_id}</Text>
+      <Text variant="bodyMedium">City id: {params.city.name}</Text>
     </View>
   );
 };

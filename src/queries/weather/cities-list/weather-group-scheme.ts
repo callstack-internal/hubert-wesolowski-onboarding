@@ -6,6 +6,7 @@ export const WeatherGroupScheme = z
       .object({
         main: z.string(),
         icon: z.string(),
+        description: z.string(),
       })
       .array(),
     main: z.object({

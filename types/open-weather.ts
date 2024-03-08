@@ -1,3 +1,7 @@
+import { z } from 'zod';
+
+import { WeatherGroupScheme } from '../src/queries/weather/cities-list/weather-group-scheme';
+
 export type OWCoord = {
   lon: number;
   lat: number;
@@ -10,15 +14,23 @@ export type OWSys = {
   sunset: number;
 };
 
-export enum OWWeatherIcon {
-  '04d' = '04d',
+export enum TemperatureUnits {
+  STANDARD = 'standard',
+  IMPERIAL = 'imperial',
+  METRIC = 'metric',
 }
+
+export const TemperatureUnitsSymbols = {
+  [TemperatureUnits.STANDARD]: '°K',
+  [TemperatureUnits.METRIC]: '°C',
+  [TemperatureUnits.IMPERIAL]: '°F',
+} as const;
 
 export type OWWeather = {
   id: number;
   main: string;
   description: string;
-  icon: OWWeatherIcon;
+  icon: string;
 };
 
 export type OWMain = {
@@ -56,3 +68,7 @@ export type OWGroupResponse = {
   cnt: number;
   list: OWCityWeather[];
 };
+
+export type PartialOWCityWeather = ArrayElement<
+  z.infer<typeof WeatherGroupScheme>
+>;

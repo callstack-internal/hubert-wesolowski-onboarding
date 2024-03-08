@@ -1,31 +1,47 @@
-import { FlatList, View } from 'react-native';
-import { Button, Text } from 'react-native-paper';
+import { useContext } from 'react';
+import { View } from 'react-native';
 
+import { PartialOWCityWeather } from '../../../types/open-weather';
+import { StatusContainer, TemperatureUnitsToolbar } from '../../components';
 import { cityIds } from '../../constants';
+import { TemperatureUnitsContext } from '../../contexts/temperature-units-context';
 import { useGetCitiesWeather } from '../../queries/weather/cities-list/use-get-cities-weather';
 import { WeatherGroupScheme } from '../../queries/weather/cities-list/weather-group-scheme';
 import { CitiesListScreenProps } from '../../routes/route.types';
 import { RouteNames } from '../../routes/route-names';
+import { styles } from './cities-list.view.styles';
+import { CitiesList } from './partials/cities-list';
 
 export const CitiesListView = ({ navigation }: CitiesListScreenProps) => {
-  const { data } = useGetCitiesWeather(cityIds);
-  const parsedData = WeatherGroupScheme.parse(data);
-  const handlePressShowDetails = () => {
-    navigation.navigate(RouteNames.CityDetails, { city_id: 123 });
+  const { units } = useContext(TemperatureUnitsContext);
+  const {
+    data = [],
+    isError,
+    isFetching,
+    refetch,
+  } = useGetCitiesWeather<PartialOWCityWeather[]>(
+    cityIds,
+    units,
+    WeatherGroupScheme.parse,
+  );
+  const handlePressShowDetails = (city: PartialOWCityWeather) => {
+    navigation.navigate(RouteNames.CityDetails, { city });
+  };
+
+  const handleRefetch = () => {
+    refetch();
   };
 
   return (
-    <View>
-      <Text variant="headlineMedium">Cities List View</Text>
-      <Button onPress={handlePressShowDetails}>Navigate to details</Button>
-      <FlatList
-        data={parsedData}
-        renderItem={({ item }) => (
-          <View>
-            <Text variant="bodyLarge">{item.name}</Text>
-          </View>
-        )}
-      />
+    <View style={styles.listWrapper}>
+      <TemperatureUnitsToolbar />
+      <StatusContainer
+        isError={isError}
+        isLoading={isFetching}
+        onRefetch={handleRefetch}
+      >
+        <CitiesList cities={data} onItemPress={handlePressShowDetails} />
+      </StatusContainer>
     </View>
   );
 };
