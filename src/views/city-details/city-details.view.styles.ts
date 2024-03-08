@@ -15,4 +15,8 @@ export const styles = StyleSheet.create({
     rowGap: 10,
     paddingVertical: 10,
   },
+  mainDataContainer: {
+    paddingHorizontal: 10,
+    alignItems: 'center',
+  },
 });

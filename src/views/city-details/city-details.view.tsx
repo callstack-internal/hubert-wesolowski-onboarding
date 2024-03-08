@@ -31,10 +31,12 @@ export const CityDetailsView = ({
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <OpenWeatherIcon size={80} icon={params.city.weather[0]?.icon} />
-      <Text variant="headlineMedium">{params.city.name}</Text>
-      <Text style={styles.description} variant="bodyLarge">
-        {params.city.weather[0].description}
-      </Text>
+      <View style={styles.mainDataContainer}>
+        <Text variant="headlineMedium">{params.city.name}</Text>
+        <Text style={styles.description} variant="bodyLarge">
+          {params.city.weather[0].description}
+        </Text>
+      </View>
       <View style={styles.weatherDataContainer}>
         <WeatherDataSection
           label={temperatureWithUnits}
