@@ -7,8 +7,6 @@ const emptyListContainer: ViewStyle = {
   justifyContent: 'center',
 };
 
-const iconSize = 50;
-
 export const styles = StyleSheet.create({
   emptyListContainer,
   list: {
@@ -30,12 +28,9 @@ export const styles = StyleSheet.create({
   listItemDescription: {
     color: MD3Colors.neutral40,
   },
-  listItemIcon: {
-    width: iconSize,
-    height: iconSize,
-  },
   listItemDataContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    columnGap: 10,
   },
 });

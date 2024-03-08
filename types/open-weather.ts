@@ -26,6 +26,12 @@ export const TemperatureUnitsSymbols = {
   [TemperatureUnits.IMPERIAL]: '°F',
 } as const;
 
+export const WindUnitsSymbols = {
+  [TemperatureUnits.STANDARD]: 'mi/h',
+  [TemperatureUnits.METRIC]: 'km/h',
+  [TemperatureUnits.IMPERIAL]: 'mi/h',
+} as const;
+
 export type OWWeather = {
   id: number;
   main: string;
