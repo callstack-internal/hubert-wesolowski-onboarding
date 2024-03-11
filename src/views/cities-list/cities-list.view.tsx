@@ -4,16 +4,15 @@ import { View } from 'react-native';
 import { PartialOWCityWeather } from '../../../types/open-weather';
 import { StatusContainer, TemperatureUnitsToolbar } from '../../components';
 import { cityIds } from '../../constants';
-import { TemperatureUnitsContext } from '../../contexts/temperature-units-context';
+import { UnitsContext } from '../../contexts/units-context';
 import { useGetCitiesWeather } from '../../queries/weather/cities-list/use-get-cities-weather';
 import { WeatherGroupScheme } from '../../queries/weather/cities-list/weather-group-scheme';
-import { CitiesListScreenProps } from '../../routes/route.types';
-import { RouteNames } from '../../routes/route-names';
+import { CitiesListScreenProps, RouteNames } from '../../routes';
 import { styles } from './cities-list.view.styles';
 import { CitiesList } from './partials/cities-list';
 
 export const CitiesListView = ({ navigation }: CitiesListScreenProps) => {
-  const { units } = useContext(TemperatureUnitsContext);
+  const { units } = useContext(UnitsContext);
   const {
     data = [],
     isError,
