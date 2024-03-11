@@ -1,4 +1,6 @@
-import { Icon, MD3Colors } from 'react-native-paper';
+import { Icon } from 'react-native-paper';
+
+import { useAppTheme } from '../../../theme';
 
 type Props = {
   focused?: boolean;
@@ -6,11 +8,13 @@ type Props = {
 };
 
 export const TabBarIcon = ({ focused, iconName }: Props) => {
+  const theme = useAppTheme();
+
   return (
     <Icon
       source={iconName}
       size={20}
-      color={focused ? MD3Colors.tertiary70 : MD3Colors.tertiary90}
+      color={focused ? theme.colors.primary : theme.colors.primaryContainer}
     />
   );
 };

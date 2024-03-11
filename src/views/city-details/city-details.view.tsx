@@ -1,17 +1,20 @@
 import { useLayoutEffect } from 'react';
 import { ScrollView, View, ViewStyle } from 'react-native';
-import { Icon, MD3Colors, Text } from 'react-native-paper';
+import { Icon, Text } from 'react-native-paper';
 
 import { OpenWeatherIcon } from '../../components/open-weather-icon';
 import { WeatherDataSection } from '../../components/weather-data-section/weather-data-section';
 import { useGetFormattedBaseWeatherData } from '../../hooks/city-weather';
 import { CityDetailsScreenProps } from '../../routes';
-import { styles } from './city-details.view.styles';
+import { useAppTheme } from '../../theme';
+import { getStyles } from './city-details.view.styles';
 
 export const CityDetailsView = ({
   route,
   navigation,
 }: CityDetailsScreenProps) => {
+  const theme = useAppTheme();
+  const styles = getStyles(theme);
   const { params } = route;
   const {
     temperatureWithUnits,
@@ -41,22 +44,22 @@ export const CityDetailsView = ({
         <WeatherDataSection
           label={temperatureWithUnits}
           Icon={
-            <Icon color={MD3Colors.tertiary70} size={30} source="thermometer" />
+            <Icon color={theme.colors.primary} size={30} source="thermometer" />
           }
         />
         <WeatherDataSection
           label={humidityWithUnits}
-          Icon={<Icon color={MD3Colors.tertiary70} size={30} source="water" />}
+          Icon={<Icon color={theme.colors.primary} size={30} source="water" />}
         />
         <WeatherDataSection
           label={pressureWithUnits}
-          Icon={<Icon color={MD3Colors.tertiary70} size={30} source="gauge" />}
+          Icon={<Icon color={theme.colors.primary} size={30} source="gauge" />}
         />
         <WeatherDataSection
           label={windSpeedWithUnits}
           Icon={
             <Icon
-              color={MD3Colors.tertiary70}
+              color={theme.colors.primary}
               size={30}
               source="weather-windy"
             />
@@ -67,7 +70,7 @@ export const CityDetailsView = ({
           Icon={
             <View style={windIconStyle}>
               <Icon
-                color={MD3Colors.tertiary70}
+                color={theme.colors.primary}
                 size={30}
                 source="arrow-down-thin"
               />

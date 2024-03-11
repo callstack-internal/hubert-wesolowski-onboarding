@@ -3,7 +3,8 @@ import { Text } from 'react-native-paper';
 
 import { TemperatureUnits } from '../../../types/open-weather';
 import { useGetFormattedTemperature } from '../../hooks/city-weather';
-import { styles } from './temperature.styles';
+import { useAppTheme } from '../../theme';
+import { getStyles } from './temperature-badge.styles';
 
 type Props = {
   temperature: number;
@@ -11,6 +12,8 @@ type Props = {
 };
 
 export const TemperatureBadge = ({ temperature }: Props) => {
+  const theme = useAppTheme();
+  const styles = getStyles(theme);
   const { temperatureWithUnits } = useGetFormattedTemperature(temperature);
 
   return (

@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
 import { Text } from 'react-native-paper';
 
-import { styles } from './tab-bar-label.styles';
+import { useAppTheme } from '../../../theme';
+import { getStyles } from './tab-bar-label.styles';
 
 type Props = {
   focused?: boolean;
@@ -11,6 +12,9 @@ export const TabBarLabel = ({
   focused,
   children,
 }: PropsWithChildren<Props>) => {
+  const theme = useAppTheme();
+  const styles = getStyles(theme);
+
   return (
     <Text
       variant="bodySmall"

@@ -2,7 +2,8 @@ import { PropsWithChildren } from 'react';
 import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
-import { styles } from './settings-section.styles';
+import { useAppTheme } from '../../../../theme';
+import { getStyles } from './settings-section.styles';
 
 type Props = {
   title?: string;
@@ -12,6 +13,9 @@ export const SettingsSection = ({
   title,
   children,
 }: PropsWithChildren<Props>) => {
+  const theme = useAppTheme();
+  const styles = getStyles(theme);
+
   return (
     <View style={styles.container}>
       {title && (

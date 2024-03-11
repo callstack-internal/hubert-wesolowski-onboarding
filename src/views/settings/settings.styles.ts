@@ -1,7 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
-});
+import { ExtendedAppTheme } from '../../theme/default-theme/theme.types';
+
+export const getStyles = (theme: ExtendedAppTheme) =>
+  StyleSheet.create({
+    container: {
+      padding: theme.spacing.SM,
+    },
+  });

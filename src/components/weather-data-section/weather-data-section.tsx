@@ -2,7 +2,8 @@ import { ReactElement } from 'react';
 import { View } from 'react-native';
 import { Divider, Text } from 'react-native-paper';
 
-import { styles } from './weather-data-section.styles';
+import { useAppTheme } from '../../theme';
+import { getStyles } from './weather-data-section.styles';
 
 type Props = {
   label: string;
@@ -10,6 +11,9 @@ type Props = {
 };
 
 export const WeatherDataSection = ({ label, Icon }: Props) => {
+  const theme = useAppTheme();
+  const styles = getStyles(theme);
+
   return (
     <>
       <View style={styles.dataContainer}>
