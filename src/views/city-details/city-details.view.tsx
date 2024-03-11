@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { ScrollView, View, ViewStyle } from 'react-native';
 import { Icon, MD3Colors, Text } from 'react-native-paper';
 
@@ -24,7 +24,7 @@ export const CityDetailsView = ({
     transform: [{ rotate: `${params.city.wind.deg}deg` }],
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({ title: params.city.name });
   }, [navigation, params.city.name]);
 

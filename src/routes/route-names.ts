@@ -6,5 +6,4 @@ export enum RouteNames {
 
 export enum NavigatorNames {
   CitiesTabs = 'CitiesTabs',
-  MainStack = 'MainStack',
 }

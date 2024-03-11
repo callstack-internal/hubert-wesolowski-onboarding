@@ -1,7 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  listWrapper: {
-    flex: 1,
+  container: {
+    marginBottom: 10,
+  },
+  title: {
+    marginBottom: 5,
   },
 });

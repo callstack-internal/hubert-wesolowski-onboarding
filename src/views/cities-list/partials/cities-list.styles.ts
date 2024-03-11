@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     width: '100%',
   },
   listContentContainer: {
-    paddingVertical: 10,
+    paddingVertical: 5,
   },
   listItemContainer: {
     width: '100%',
