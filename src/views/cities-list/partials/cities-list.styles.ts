@@ -1,5 +1,6 @@
 import { StyleSheet, ViewStyle } from 'react-native';
-import { MD3Colors } from 'react-native-paper';
+
+import { ExtendedAppTheme } from '../../../theme/default-theme/theme.types';
 
 const emptyListContainer: ViewStyle = {
   width: '100%',
@@ -7,30 +8,31 @@ const emptyListContainer: ViewStyle = {
   justifyContent: 'center',
 };
 
-export const styles = StyleSheet.create({
-  emptyListContainer,
-  list: {
-    width: '100%',
-  },
-  listContentContainer: {
-    paddingVertical: 10,
-  },
-  listItemContainer: {
-    width: '100%',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  listItemNameContainer: {
-    justifyContent: 'center',
-  },
-  listItemDescription: {
-    color: MD3Colors.neutral40,
-  },
-  listItemDataContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    columnGap: 10,
-  },
-});
+export const getStyles = (theme: ExtendedAppTheme) =>
+  StyleSheet.create({
+    emptyListContainer,
+    list: {
+      width: '100%',
+    },
+    listContentContainer: {
+      paddingVertical: theme.spacing.XS,
+    },
+    listItemContainer: {
+      width: '100%',
+      paddingVertical: theme.spacing.XS,
+      paddingHorizontal: theme.spacing.SM,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    listItemNameContainer: {
+      justifyContent: 'center',
+    },
+    listItemDescription: {
+      color: theme.colors.outline,
+    },
+    listItemDataContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      columnGap: theme.spacing.SM,
+    },
+  });

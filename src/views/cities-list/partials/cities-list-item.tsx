@@ -5,7 +5,8 @@ import { Text } from 'react-native-paper';
 import { PartialOWCityWeather } from '../../../../types/open-weather';
 import { TemperatureBadge } from '../../../components';
 import { OpenWeatherIcon } from '../../../components/open-weather-icon';
-import { styles } from './cities-list.styles';
+import { useAppTheme } from '../../../theme';
+import { getStyles } from './cities-list.styles';
 
 type Props = {
   item: PartialOWCityWeather;
@@ -13,6 +14,8 @@ type Props = {
 };
 
 export const CitiesListItem = ({ item, onPress }: Props) => {
+  const theme = useAppTheme();
+  const styles = getStyles(theme);
   const iconName = item.weather[0].icon;
   const { temp } = item.main;
 
